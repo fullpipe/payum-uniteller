@@ -60,8 +60,20 @@ class PaymentController extends PayumController
                 'number' => $request->get('Order_ID'),
             ));
 
-        $gateway->execute(new Notify($payment));
+        if ($reply = $gateway->execute(new Notify($payment), true)) {
+            if ($reply instanceof HttpResponse) {
+                $gateway->execute($status = new GetHumanStatus($payment));
 
+                if ($status->isCaptured() || $status->isAuthorized()) {
+                    // Payment is done
+                    // Notify your app here
+                }
+
+                throw $reply;
+            }
+
+            throw new \LogicException('Unsupported reply', null, $reply);
+        }
         return new Response('', 204);
     }
 }
