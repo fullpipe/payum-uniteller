@@ -204,7 +204,6 @@ class Api
         );
 
         $signature = strtoupper(md5(implode('', $signatureParams)));
-        echo $signature;
 
         return $signature == $params['Signature'];
     }

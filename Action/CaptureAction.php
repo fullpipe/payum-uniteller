@@ -9,29 +9,14 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\Reply\HttpPostRedirect;
 use Payum\Core\Request\Capture;
-use Payum\Core\Security\GenericTokenFactoryAwareInterface;
-use Payum\Core\Security\GenericTokenFactoryInterface;
 use Fullpipe\Payum\Uniteller\Api;
 
-class CaptureAction implements ActionInterface, ApiAwareInterface, GenericTokenFactoryAwareInterface
+class CaptureAction implements ActionInterface, ApiAwareInterface
 {
     /**
      * @var Api
      */
     protected $api;
-
-    /**
-     * @var GenericTokenFactoryInterface
-     */
-    protected $tokenFactory;
-
-    /**
-     * @param GenericTokenFactoryInterface $genericTokenFactory
-     */
-    public function setGenericTokenFactory(GenericTokenFactoryInterface $genericTokenFactory = null)
-    {
-        $this->tokenFactory = $genericTokenFactory;
-    }
 
     /**
      * {@inheritDoc}

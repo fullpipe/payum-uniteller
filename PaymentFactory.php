@@ -78,7 +78,7 @@ class PaymentFactory implements PaymentFactoryInterface
                     'sandbox' => $config['sandbox'],
                 );
 
-                return new Api($unitellerConfig, $config['buzz.client']);
+                return new Api($unitellerConfig);
             };
         }
 
