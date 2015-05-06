@@ -1,4 +1,4 @@
-# Uniteller payment gateway for payum
+# Uniteller payment gateway for [payum](http://payum.org/)
 
 ## Instalation (with symfony2 payum bundle)
 add to your composer json
